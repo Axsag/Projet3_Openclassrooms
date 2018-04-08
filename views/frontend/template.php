@@ -39,14 +39,7 @@
               <a class="nav-link" href="index.html">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">Sample Post</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
+              <a class="nav-link" href="index.php?action=login">Admin</a>
           </ul>
         </div>
       </div>
