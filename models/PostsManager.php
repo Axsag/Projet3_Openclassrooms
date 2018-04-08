@@ -10,5 +10,13 @@ class PostsManager extends Manager
 		 return $req;
 	}
 
-
+	public function getPost($postId)
+    {
+        $db = $this->dbConnect();
+         $req = $db->prepare('SELECT id, titre, contenu, date_creation FROM article WHERE id = ?');
+        $req->execute(array($postId)); //var_dump($req);
+     	$post = $req->fetch(PDO::FETCH_ASSOC); //var_dump($post);die;
+     	
+        return $post; 
+    }
 }

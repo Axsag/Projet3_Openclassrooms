@@ -1,5 +1,4 @@
 <?php $title = 'Jean Forteroche'; ?>
-
 <?php ob_start(); ?>
 
 <?php
@@ -7,7 +6,7 @@ foreach ($posts as $data)
 {
 ?>
     	  <div class="post-preview">
-			<a href="post.html">
+			<a href="index.php?action=post&amp;id=<?= $data['id'] ?>">
               <h2 class="post-title">
                 <?= htmlspecialchars($data['titre']) ?>
               </h2>
