@@ -1,6 +1,9 @@
 <?php
 
-function homepage()
+function listPosts()
 {
-    require('views/frontend/homepageView.php');
+    $postManager = new PostsManager(); 
+    $posts = $postManager->getPosts(); 
+    require('views/frontend/listPostsView.php');
+    
 }
