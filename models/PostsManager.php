@@ -19,4 +19,29 @@ class PostsManager extends Manager
      	
         return $post; 
     }
+
+    public function insertPost($titre, $contenu)
+    {
+        //var_dump($titre,$contenu);die;
+        $db = $this->dbConnect();
+        $req = $db->prepare('INSERT INTO article(titre, contenu, date_creation) VALUES(?,?, NOW())');
+        // $affectedLines = $req->execute(array($_POST['titre'],$_POST['contenu']));
+        $affectedLines = $req->execute(array($titre, $contenu)); //var_dump($affectedLines);die;
+
+        return $affectedLines;    
+    }
+
+    public function editPost($id, $titre, $contenu)
+    {
+        $db = $this->dbconnect();
+        $req = $db->prepare('UPDATE article SET titre=:titre, contenu=:contenu WHERE id=:id ');
+        $req->execute(array('id' => $id, 'titre' => $titre,'contenu' => $contenu));
+        }
+
+    public function deletePost($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM posts WHERE id=:id');
+        $req->execute(array('id' => $id));
+    }
 }
