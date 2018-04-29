@@ -4,12 +4,12 @@
 
 <div class="news">
     <h2>
-        <?= htmlspecialchars($post['titre']) ?>
+        <?= $post['titre'] ?>
         <em>le <?= $post['date_creation'] ?></em>
     </h2>
     
     <p>
-        <?= nl2br(htmlspecialchars($post['contenu'])) ?>
+        <?= nl2br($post['contenu']) ?>
     </p>
 
 
@@ -21,9 +21,9 @@
 foreach ($comments as $comment)
 {
 ?>
-    <p><strong><?= htmlspecialchars($comment['auteur']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p><a href="index.php?action=editComment&amp;id=<?= $post['id'] ?>&amp;commentId=<?= $comment['id'] ?>"> (edit)</a>
-    <p><?= nl2br(htmlspecialchars($comment['commentaire'])) ?></p>
+    <p><strong><?= $comment['auteur'] ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+    <p><?= nl2br($comment['commentaire']) ?></p>
+    <a href="index.php?action=reportcomment&id=<?=$_GET['id']?>&report=<?=$comment['id']?>"><button type="button"  class="btn btn-danger btn-sm">Signaler</button></a>
 
 <?php
 }

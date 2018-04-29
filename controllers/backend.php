@@ -10,7 +10,17 @@ function getUser($user, $pass)
 	else echo "Mauvais mdp";
 }
 
-function addPost($titre, $contenu)
+function postAdmin()
+{
+	$postManager = new PostsManager();
+	$commentManager = new commentManager();
+	$post = $postManager->getPost($_GET['id']);
+	$comments = $commentManager->getComments($_GET['id']);
+
+	require ('views/backend/commentGestionView.php');
+}
+
+function addPost($titre, $contenu) //add new content
 {
 	$postsManager = new PostsManager();
 	$affectedLines = $postsManager->insertPost($titre, $contenu); //var_dump($affectedLines);die;
@@ -21,13 +31,14 @@ function addPost($titre, $contenu)
     } 
     else 
     {
-    	require ('views/backend/addpostView.php');
+    	header('Location: index.php?action=gestionPosts');
+        exit();
     }
 }
 
 function postEdition($id, $titre, $contenu)
 {
-    $postmanager = new PostManager();
+    $postmanager = new PostsManager();
     $postEditions = $postmanager->editPost($id, $titre, $contenu);
     
     if ($postEditions === false) 
@@ -36,6 +47,54 @@ function postEdition($id, $titre, $contenu)
     } 
     else 
     {
-        require ('views/backend/updatepostView.php');
+        header('Location: index.php?action=gestionPosts');
+        exit();
     }
+}
+
+function postSuppression($id)
+{        
+    $postmanager = new PostsManager();
+    $suppressionpost = $postmanager->deletePost($id);
+    //echo 'done';die;
+    header('Location: index.php?action=gestionPosts');
+    exit();
+}
+
+function editshow($id)
+{  
+    $postmanager = new PostsManager();
+    $currentPost = $postmanager->getPost($id);
+    require ('views/backend/editpostView.php');
+}
+
+function gestionPosts()
+{
+    $postsManager = new PostsManager();
+    $listcourent = $postsManager->getPosts();
+    require ('views/backend/updatepostView.php');
+}
+
+function commentSuppression($id)
+{
+    $commentManager = new CommentManager();
+    $supressioncomment = $commentManager->deleteComment($id);
+    header('Location: index.php?action=gestionPosts');
+    exit();
+}
+
+function reportcomment($id, $report)
+{
+	$commentManager = new CommentManager();
+	$commentReport = $commentManager->reportComments($report);
+	header('Location: index.php?action=post&id='. $id);
+	exit();
+}
+
+function removereport($id_comment)
+{
+    $commentManager = new CommentManager();
+    $removereport = $commentManager->removereports($id_comment);
+    header('Location: index.php?action=gestionPosts');
+    exit();
 }

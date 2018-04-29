@@ -8,10 +8,10 @@ foreach ($posts as $data)
     	  <div class="post-preview">
 			<a href="index.php?action=post&amp;id=<?= $data['id'] ?>">
               <h2 class="post-title">
-                <?= htmlspecialchars($data['titre']) ?>
+                <?= ($data['titre']) ?>
               </h2>
               <h3 class="post-subtitle">
-         	   <?= nl2br(htmlspecialchars($data['contenu'])) ?>
+         	   <?= nl2br($data['contenu']) ?>
               </h3>
             </a>
               <p class="post-meta">

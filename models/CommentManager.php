@@ -5,7 +5,7 @@ class CommentManager extends Manager
     public function getComments($postId)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaires WHERE id_article = ? ORDER BY date_commentaire DESC');
+        $comments = $db->prepare('SELECT id, auteur, commentaire, signaler, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaires WHERE id_article = ? ORDER BY date_commentaire DESC');
         $comments->execute(array($postId));
 
         return $comments;
@@ -20,21 +20,47 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    public function updateComment($commentId, $auteur, $commentaire)
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('UPDATE commentaires SET auteur = ?, commentaire = ? WHERE id = ?');
-        $affectedLines = $comments->execute(array($auteur, $commentaire, $commentId));
+    // public function updateComment($commentId, $auteur, $commentaire)
+    // {
+    //     $db = $this->dbConnect();
+    //     $comments = $db->prepare('UPDATE commentaires SET auteur = ?, commentaire = ? WHERE id = ?');
+    //     $affectedLines = $comments->execute(array($auteur, $commentaire, $commentId));
 
-        return $affectedLines;
-    }
+    //     return $affectedLines;
+    // }
 
     public function deleteComment($commentId)
     {
     	$db = $this->dbConnect();
-    	$comments = $db->prepare('DELETE FROM comments WHERE id= ?');
+    	$comments = $db->prepare('DELETE FROM commentaires WHERE id= ?');
     	$affectedLines = $comments->execute(array($commentId));
 
     	return $affectedLines;
+    }
+
+    public function reportComments($report)
+    {
+        $db = $this->dbConnect();
+        $report = $db->prepare('UPDATE commentaires SET signaler=:signaler WHERE id=:signaler');
+        $report = $report->execute(array('signaler' => $_GET['report']));
+        return $report;
+
+    }
+
+    public function reportShow()
+    {
+        $db = $this->dbConnect();
+        $comments = $db->query('SELECT id, id_article, signaler, auteur, commentaire, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaires WHERE signaler !=0');
+        return $comments;
+
+    }
+
+    public function removereports($id_comment)
+    {
+        $db = $this->dbconnect();
+        $back = $db->prepare('UPDATE commentaires SET signaler=:signaler WHERE id=:id ');
+        $removereport = $back->execute(array('id' => $id_comment, 'signaler' => 0));
+        //var_dump($id_comment, $removereport);die;
+        return $removereport;
     }
 }
