@@ -11,7 +11,8 @@ function getUser($user, $pass)
 }
 
 function postAdmin()
-{
+{   
+    UserManager::noSession();
 	$postManager = new PostsManager();
 	$commentManager = new commentManager();
 	$post = $postManager->getPost($_GET['id']);
@@ -21,7 +22,8 @@ function postAdmin()
 }
 
 function addPost($titre, $contenu) //add new content
-{
+{   
+    UserManager::noSession();
 	$postsManager = new PostsManager();
 	$affectedLines = $postsManager->insertPost($titre, $contenu); //var_dump($affectedLines);die;
 	//require ('views/backend/adminView.php');
@@ -37,7 +39,8 @@ function addPost($titre, $contenu) //add new content
 }
 
 function postEdition($id, $titre, $contenu)
-{
+{   
+    UserManager::noSession();
     $postmanager = new PostsManager();
     $postEditions = $postmanager->editPost($id, $titre, $contenu);
     
@@ -53,7 +56,8 @@ function postEdition($id, $titre, $contenu)
 }
 
 function postSuppression($id)
-{        
+{   
+    UserManager::noSession();     
     $postmanager = new PostsManager();
     $suppressionpost = $postmanager->deletePost($id);
     //echo 'done';die;
@@ -63,20 +67,23 @@ function postSuppression($id)
 
 function editshow($id)
 {  
+    UserManager::noSession();
     $postmanager = new PostsManager();
     $currentPost = $postmanager->getPost($id);
     require ('views/backend/editpostView.php');
 }
 
 function gestionPosts()
-{
+{   
+    UserManager::noSession();
     $postsManager = new PostsManager();
     $listcourent = $postsManager->getPosts();
     require ('views/backend/updatepostView.php');
 }
 
 function commentSuppression($id)
-{
+{   
+    UserManager::noSession();
     $commentManager = new CommentManager();
     $supressioncomment = $commentManager->deleteComment($id);
     header('Location: index.php?action=gestionPosts');
@@ -84,7 +91,7 @@ function commentSuppression($id)
 }
 
 function reportcomment($id, $report)
-{
+{   
 	$commentManager = new CommentManager();
 	$commentReport = $commentManager->reportComments($report);
 	header('Location: index.php?action=post&id='. $id);
@@ -92,9 +99,18 @@ function reportcomment($id, $report)
 }
 
 function removereport($id_comment)
-{
+{   
+    UserManager::noSession();
     $commentManager = new CommentManager();
     $removereport = $commentManager->removereports($id_comment);
     header('Location: index.php?action=gestionPosts');
+    exit();
+}
+
+function logOut()
+{
+    $test = new MembersManager();
+    $test->checkSession();
+    header('Location: index.php?action=listPosts');
     exit();
 }

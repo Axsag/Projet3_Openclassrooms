@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require ('controllers/frontend.php');
 require ('controllers/backend.php');
 //require ('models/PostsManager.php');
@@ -36,6 +38,12 @@ if (isset($_GET['action'])) {
         }
     }
 
+    //Fin de session
+    elseif ($_GET['action'] == 'logout') 
+    {
+        logOut();
+    }
+
     //Ajout d'un post
     elseif ($_GET['action'] == 'addPost') 
     {
@@ -60,27 +68,6 @@ if (isset($_GET['action'])) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
-
-    // //Modifier commentaire 
-    // elseif ($_GET['action'] == 'editComment') {
-            
-    //     if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0) 
-    //     {
-    //         if (!empty($_POST['auteur']) && !empty($_POST['commentaire'])) 
-    //         {
-    //             editComment($_GET['id'], $_GET['commentId'], $_POST['auteur'], $_POST['commentaire'] );
-    //         }
-    //         else 
-    //         {
-    //             editComment($_GET['id'], $_GET['commentId']);
-    //         }
-    //     }
-    //     else 
-    //     {
-    //         // sinon on affiche un message d'erreur 
-    //         throw new Exception('Aucun identifiant de billet envoyé');
-    //     }
-    // }
 
     //Editer un article    
     elseif ($_GET['action'] == 'postEdition')
@@ -108,7 +95,8 @@ if (isset($_GET['action'])) {
 
     // affichage des billets et des commentaires dans le backend
     elseif ($_GET['action'] == 'postAdmin')
-    {
+    {   
+        UserManager::noSession();
         postAdmin();
     }
 
