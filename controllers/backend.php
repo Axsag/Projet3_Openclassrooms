@@ -6,10 +6,15 @@ function getUser($user, $pass)
 	$userManager = new UserManager();
 	$userlog = $userManager->getUser($user, $pass);
 	if ($pass == $userlog['pass'])
-		require ('views/backend/adminView.php');
-	else echo "Mauvais mdp";
+    {
+        header('Location: index.php?action=homepageBackend');
+    }
+	else
+    {
+        header('Location: index.php?action=listPosts');
+        exit;
+    } 
 }
-
 function postAdmin()
 {   
     UserManager::noSession();
@@ -108,9 +113,21 @@ function removereport($id_comment)
 }
 
 function logOut()
-{
+{   
     $test = new MembersManager();
     $test->checkSession();
     header('Location: index.php?action=listPosts');
     exit();
+}
+
+function homepageBackend()
+{   
+    UserManager::noSession();
+    require ('views/backend/adminView.php');
+}
+
+function addpostBackend()
+{
+    UserManager::noSession();
+    require ('views/backend/addpostView.php');
 }

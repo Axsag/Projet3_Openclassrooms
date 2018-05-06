@@ -1,19 +1,20 @@
 <?php ob_start(); ?>
 
-<h4><a href="index.php">Retour à l'accueil</a></h4>
+
 
 <div class="news">
-    <h2>
+    <h1>
         <?= $post['titre'] ?>
-        <em>le <?= $post['date_creation'] ?></em>
-    </h2>
+       
+    </h1>
+    <em class="post-meta">publié le <?= $post['date_creation_fr'] ?></em>
     
     <p>
         <?= nl2br($post['contenu']) ?>
     </p>
+    <hr>
 
-
-<h2>Commentaires</h2>
+<h4>Commentaires</h4>
 
 <?php
 
@@ -21,41 +22,16 @@
 foreach ($comments as $comment)
 {
 ?>
-    <p><strong><?= $comment['auteur'] ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+    <p><strong><?= $comment['auteur'] ?></strong>  le <?= $comment['comment_date_fr'] ?></p>
     <p><?= nl2br($comment['commentaire']) ?></p>
-    <a href="index.php?action=reportcomment&id=<?=$_GET['id']?>&report=<?=$comment['id']?>"><button type="button"  class="btn btn-danger btn-sm">Signaler</button></a>
+    <a href="index.php?action=reportcomment&id=<?=$_GET['id']?>&report=<?=$comment['id']?>"><p class="btn btn-outline-danger" ><em class="fa fa-exclamation-triangle"></em></p></a>
+
 
 <?php
 }
+?>
 
-
-if (isset($commentId))
-{
-
-   foreach ($comments as $comment)
-    {
-    if ($comment['id'] == $commentId)
-        {
-         ?>  
-         <form action="index.php?action=editComment&amp;id=<?= $post['id'] ?>&amp;commentId=<?= $commentId ?>" method="post">
-            <div>
-                <label for="auteur">Auteur</label><br />
-                <input type="text" id="auteur" name="auteur" value="<?= $comment['auteur'] ?>" />
-             </div>
-            <div>
-                <label for="comment">Commentaire</label><br />
-                <textarea id="comment" name="comment" value="<?= $comment['comment'] ?>"></textarea>
-            </div>
-            <div>
-                <input type="submit" />
-            </div>
-        </form> 
-    <?php
-        }
-    }
-    
-} else { ?>
-
+    <hr>
     <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
     <div>
         <label for="auteur">Auteur</label><br />
@@ -70,7 +46,7 @@ if (isset($commentId))
     </div>
 </form>
 <?php
-}
+
 $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

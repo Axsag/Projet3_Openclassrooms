@@ -15,7 +15,18 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'listPosts') {
         listPosts();
     }
-   
+    
+    //Accueil Backend
+    if ($_GET['action'] == 'homepageBackend') {
+        homepageBackend();
+    }
+
+    //Ajouter un article backend
+
+    if ($_GET['action'] == 'addpostBackend') {
+        addpostBackend();
+    }
+
     //Page Post + commentaires
     elseif ($_GET['action'] == 'post') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -28,6 +39,7 @@ if (isset($_GET['action'])) {
 
     //Page login
     elseif ($_GET['action'] == 'login') {
+        UserManager::sessionExist();
         if (isset($_POST['pseudo']) && ($_POST['pass'])) 
         {
            getUser($_POST['pseudo'], $_POST['pass']) ; 

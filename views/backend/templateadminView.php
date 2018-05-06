@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Blank Page</title>
+  <title>J-F Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -34,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="public/backend/index2.html" class="logo">
+    <a href="index.php?action=homepageBackend" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>J-F</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -124,7 +124,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="views/backend/addpostView.php"><i class="fa fa-circle-o"></i> Ajouter un article</a></li>
+            <li><a href="index.php?action=addpostBackend"><i class="fa fa-circle-o"></i> Ajouter un article</a></li>
             <li><a href="index.php?action=gestionPosts"><i class="fa fa-circle-o"></i> Editer un article</a></li>
           </ul>
         </li>

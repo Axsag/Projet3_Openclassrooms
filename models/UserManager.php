@@ -7,7 +7,7 @@ class UserManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, pseudo, pass, email FROM membres WHERE pseudo = ? ');
         $req->execute(array($user)); //var_dump($req);
-        $user = $req->fetch(); //var_dump($user);die;
+        $user = $req->fetch(PDO::FETCH_ASSOC); //var_dump($user);die;
         $this->_sessiondata($user);
         return $user;
     }
@@ -18,8 +18,7 @@ class UserManager extends Manager
 	{
 		if(!empty($user))
 		{
-			$_SESSION['auth'] = $user; 
-		}
+			$_SESSION['auth'] = $user;		}
 	}
 
 	public static function checkSession()
@@ -36,10 +35,18 @@ class UserManager extends Manager
 
 	public static function noSession()
 	{
+		// var_dump($_SESSION['auth']);die;
 		if (self::checkSession() == false)
-			{
-				header('Location : index.php');
-				exit();
-			}
+		{
+			header('Location: index.php');
+			exit();
+		}
+	}
+	public static function sessionExist()
+	{
+		if (self::checkSession() == true)
+		{
+			header('Location: index.php?action=homepageBackend');
+		}
 	}
 }

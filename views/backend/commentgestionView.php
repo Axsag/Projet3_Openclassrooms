@@ -7,7 +7,7 @@
 				class="fa fa-pencil"></em></a> <a class="btn btn-danger"
 			href="index.php?action=postSuppression&id=<?=$_GET['id'];?>"><em
 				class="fa fa-trash"></em></a></td>
-		<td class="hidden-xs"><em>le <?= $post['date_creation'] ?></em></td>
+		<td class="hidden-xs"><em>le <?= $post['date_creation_fr'] ?></em></td>
 		<td><?=  $post['titre']?></td>
 		<td><?= nl2br($post['contenu'])?></td>
 	</tr>

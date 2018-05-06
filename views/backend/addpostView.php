@@ -9,20 +9,20 @@
 	<script>  tinymce.init({selector: '#contenu'  });</script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Blank Page</title>
+  <title>J-F Ajout d'article</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../public/backend/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/backend/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../public/backend/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="public/backend/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../public/backend/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="public/backend/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../../public/backend/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="public/backend/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../public/backend/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="public/backend/dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,7 +40,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../public/backend/index2.html" class="logo">
+    <a href="index.php?action=homepageBackend" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>J-F</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -67,13 +67,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../public/backend/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="public/backend/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Jean Forteroche</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../public/backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="public/backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce - Ecrivain
@@ -88,7 +88,7 @@
               <li class="user-footer">
                 
                 <div class="pull-right">
-                  <a href="../../views/backend/logOut.php" class="btn btn-default btn-flat">Log out</a>
+                  <a href="views/backend/logOut.php" class="btn btn-default btn-flat">Log out</a>
                 </div>
               </li>
             </ul>
@@ -109,7 +109,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../../public/backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="public/backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Jean Forteroche</p>
@@ -130,8 +130,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../../views/backend/addpostView.php"><i class="fa fa-circle-o"></i> Ajouter un article</a></li>
-            <li><a href="../../index.php?action=gestionPosts"><i class="fa fa-circle-o"></i> Editer un article</a></li>
+            <li><a href="index.php?action=addpostBackend"><i class="fa fa-circle-o"></i> Ajouter un article</a></li>
+            <li><a href="index.php?action=gestionPosts"><i class="fa fa-circle-o"></i> Editer un article</a></li>
           </ul>
         </li>
         
@@ -151,7 +151,7 @@
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../../index.php"><i class="fa fa-dashboard"></i> Accueil du site</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Accueil du site</a></li>
         
       </ol>
     </section>
@@ -171,7 +171,7 @@
         </div>
         <!-- /.box-body -->
         
-	<form action="../../index.php?action=addPost"
+	<form action="index.php?action=addPost"
 		method="post">
 		<div>
 			<label for="titre">titre</label><br /> <input type="text" id="titre"
@@ -212,17 +212,17 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="../../public/backend/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="public/backend/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../../public/backend/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="public/backend/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
-<script src="../../public/backend/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="public/backend/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="../../public/backend/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="public/backend/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../../public/backend/dist/js/adminlte.min.js"></script>
+<script src="public/backend/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../public/backend/dist/js/demo.js"></script>
+<script src="public/backend/dist/js/demo.js"></script>
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()

@@ -23,8 +23,7 @@ function addComment($postId, $auteur, $commentaire)
 {
     $commentManager = new CommentManager();
 
-    $affectedLines = $commentManager->postComment($postId, $auteur, $commentaire);
-
+    $affectedLines = $commentManager->postComment($postId, $auteur, $commentaire); //var_dump($affectedLines);die;
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
@@ -56,3 +55,13 @@ function editComment($postId, $commentId, $auteur=null, $commentaire=null)
     
     require('views/frontend/postView.php');
 }
+
+// function subMyString( $contenu, $limite, $separateur = '...' ) {
+//     if( strlen($contenu) >= $limite ) {
+//         $contenu = substr( $contenu, 0, $limite );
+//         $contenu = substr( $contenu, 0, strrpos($contenu, ' ') );
+//         $contenu .= $separateur;
+//     }
+     
+//     return $contenu;
+// }
