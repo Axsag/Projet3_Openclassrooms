@@ -13,17 +13,22 @@ if (isset($_GET['action'])) {
 	
 	//Page listPosts
     if ($_GET['action'] == 'listPosts') {
-        listPosts();
+        listPosts(5);
+    }
+
+    //Page listAllPosts
+    elseif ($_GET['action'] == 'listAllPosts') {
+        listPosts(100);
     }
     
     //Accueil Backend
-    if ($_GET['action'] == 'homepageBackend') {
+    elseif ($_GET['action'] == 'homepageBackend') {
         homepageBackend();
     }
 
     //Ajouter un article backend
 
-    if ($_GET['action'] == 'addpostBackend') {
+    elseif ($_GET['action'] == 'addpostBackend') {
         addpostBackend();
     }
 
@@ -76,7 +81,8 @@ if (isset($_GET['action'])) {
                 echo 'Erreur : tous les champs ne sont pas remplis !';
             }
         }
-        else {
+        else 
+        {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
@@ -130,8 +136,9 @@ if (isset($_GET['action'])) {
         commentSuppression($_GET['id']);
     }
 }
-else {
-    listPosts();
+else 
+{
+    listPosts(5);
 }
 
 

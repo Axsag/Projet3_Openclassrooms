@@ -18,7 +18,8 @@ class UserManager extends Manager
 	{
 		if(!empty($user))
 		{
-			$_SESSION['auth'] = $user;		}
+			$_SESSION['auth'] = $user;		
+		}
 	}
 
 	public static function checkSession()
@@ -35,7 +36,6 @@ class UserManager extends Manager
 
 	public static function noSession()
 	{
-		// var_dump($_SESSION['auth']);die;
 		if (self::checkSession() == false)
 		{
 			header('Location: index.php');

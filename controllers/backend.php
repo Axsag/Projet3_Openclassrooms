@@ -3,6 +3,7 @@
 
 function getUser($user, $pass)
 {
+    $pass=md5($pass);
 	$userManager = new UserManager();
 	$userlog = $userManager->getUser($user, $pass);
 	if ($pass == $userlog['pass'])
@@ -82,7 +83,7 @@ function gestionPosts()
 {   
     UserManager::noSession();
     $postsManager = new PostsManager();
-    $listcourent = $postsManager->getPosts();
+    $listcourent = $postsManager->getPosts(100);
     require ('views/backend/updatepostView.php');
 }
 

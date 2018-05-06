@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -167,8 +165,8 @@
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col col-xs-6">
-							<h3 class="panel-title">Modifier / supprimer article ou commentaire</h3>
-							<a href=" index.php?action=gestionPosts">Retour à la liste des articles : </a>
+							<h3 class="panel-title">Modifier / supprimer article ou commentaire : </h3>
+							
 						</div>
 						<div class="col col-xs-6 text-right">
 							<!--  <a href="index.php?action=addComment"><button

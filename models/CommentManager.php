@@ -16,18 +16,8 @@ class CommentManager extends Manager
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO commentaires(id_article, signaler, auteur, commentaire, date_commentaire) VALUES(?, 0, ?, ?, NOW())');
         $affectedLines = $comments->execute(array($postId, $auteur, $commentaire));
-        //var_dump($affectedLines);die;
         return $affectedLines;
     }
-
-    // public function updateComment($commentId, $auteur, $commentaire)
-    // {
-    //     $db = $this->dbConnect();
-    //     $comments = $db->prepare('UPDATE commentaires SET auteur = ?, commentaire = ? WHERE id = ?');
-    //     $affectedLines = $comments->execute(array($auteur, $commentaire, $commentId));
-
-    //     return $affectedLines;
-    // }
 
     public function deleteComment($commentId)
     {
@@ -60,7 +50,6 @@ class CommentManager extends Manager
         $db = $this->dbconnect();
         $back = $db->prepare('UPDATE commentaires SET signaler=:signaler WHERE id=:id ');
         $removereport = $back->execute(array('id' => $id_comment, 'signaler' => 0));
-        //var_dump($id_comment, $removereport);die;
         return $removereport;
     }
 }

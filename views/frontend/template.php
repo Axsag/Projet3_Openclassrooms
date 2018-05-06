@@ -70,9 +70,15 @@
         </div>
       </div>
     </div>
-
+    <?php if ($limit!=100){
+      ?>
+    <a href="index.php?action=listAllPosts">
+      <div class="text-center">
+        <button class="btn btn-primary btn-sx" type="button">Voir tous les articles</button>
+      </div>
+    </a>
     <hr>
-
+    <?php }?>
     <!-- Footer -->
     <footer>
       <div class="container">
