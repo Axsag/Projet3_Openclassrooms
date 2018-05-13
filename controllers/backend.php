@@ -20,11 +20,11 @@ function postAdmin()
 {   
     UserManager::noSession();
 	$postManager = new PostsManager();
-	$commentManager = new commentManager();
+	$commentManager = new CommentManager();
 	$post = $postManager->getPost($_GET['id']);
 	$comments = $commentManager->getComments($_GET['id']);
 
-	require ('views/backend/commentGestionView.php');
+	require ('views/backend/commentgestionView.php');
 }
 
 function addPost($titre, $contenu) //add new content
